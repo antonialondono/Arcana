@@ -1,0 +1,150 @@
+.home {
+  display: grid;
+  gap: 3.3rem;
+}
+
+.home__hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.home__hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 8.3rem);
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.home__hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.home__hero-text {
+  max-width: 420px;
+}
+
+.home__hero-text h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+.home__hero-text p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.home__hero-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: min(420px, 45vw);
+}
+
+.card {
+  background: var(--accent);
+  border-radius: var(--radius);
+  min-height: 86px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: #f2f2f2;
+  gap: 0.3rem;
+}
+
+.card--tall {
+  grid-row: span 2;
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+.home__video {
+  background: var(--accent);
+  min-height: 320px;
+  border-radius: 36px;
+  display: grid;
+  place-items: center;
+  gap: 0.8rem;
+  padding: 1.4rem;
+  text-align: center;
+}
+
+
+.home__video p {
+  color: #fff;
+}
+
+.home__blocks {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 0.65rem;
+}
+
+.home__block {
+  background: var(--accent);
+  border-radius: var(--radius);
+  padding: 1.2rem 1rem;
+  min-height: 125px;
+}
+
+.home__block--tall {
+  min-height: 355px;
+  grid-row: span 2;
+  color:#f2f2f2;
+}
+
+.home__block h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  color:#f2f2f2;
+}
+
+.home__block p {
+  margin: 0.4rem 0 0;;
+  color:#f2f2f2;
+}
+
+@media (max-width: 860px) {
+  .home__hero {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .home__hero-cards {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home__video {
+    min-height: 250px;
+    border-radius: 24px;
+  }
+
+   
+
+  .home__blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .home__block--tall {
+    min-height: 140px;
+    grid-row: span 1;
+  }
+}
