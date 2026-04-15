@@ -57,7 +57,7 @@ const itemVariants = {
   },
 }
 
-function ScrollCard({ title, description, icon, color, index }) {
+function ScrollCard({ title, description, index }) {
   return (
     <motion.div
       className={`scroll-card scroll-card-${index}`}
@@ -69,10 +69,8 @@ function ScrollCard({ title, description, icon, color, index }) {
       <div className="scroll-card-content">
         <motion.div
           className="scroll-card-icon"
-          style={{ color }}
           variants={itemVariants}
         >
-          {icon}
         </motion.div>
         <motion.div variants={itemVariants} className="scroll-card-text">
           <h3>{title}</h3>

@@ -1,161 +1,342 @@
 .home {
   display: grid;
   gap: 5rem;
+  padding: 3rem 0;
 }
 
+/* ===== HERO SECTION ===== */
 .home__hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: end;
-}
-
-.home__hero h1 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 14vw, 10rem);
-  font-weight: 1000;
-  line-height: 0.9;
-}
-
-.home__hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.home__hero-text {
-  max-width: 520px;
-}
-
-.home__hero-text h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-}
-
-.home__hero-text p {
-  margin: 0.6rem 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.home__hero-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  width: min(480px, 50vw);
-}
-
-.card {
-  background: var(--accent);
-  border-radius: var(--radius);
-  min-height: 110px;
-  padding: 1.3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  color: #f2f2f2;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.card--tall {
-  grid-row: span 2;
-}
-
-.card__title {
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-
-.home__video {
-  background: var(--accent);
-  min-height: 320px;
-  border-radius: 36px;
+  min-height: 100vh;
   display: grid;
   place-items: center;
-  gap: 0.8rem;
-  padding: 1.4rem;
+  background: radial-gradient(ellipse at center, rgba(47, 111, 237, 0.15) 0%, transparent 70%);
+  position: relative;
+  padding: 2rem;
+}
+
+.home__hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  max-width: 900px;
+}
+
+.home__logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 15px rgba(47, 111, 237, 0.3));
+}
+
+.home__arcana-title {
+  width: 300px;
+  height: auto;
+  margin: 1rem 0;
+  filter: drop-shadow(0 4px 15px rgba(47, 111, 237, 0.3));
+}
+
+
+
+.home__hero h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #2F6FED;
+  font-weight: 600;
+}
+
+.home__hero p {
+  margin: 1rem 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, #1A4DB8 0%, #2F6FED 100%);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(47, 111, 237, 0.3);
+}
+
+.btn--primary:hover {
+  background: linear-gradient(135deg, #154CB0 0%, #2560D1 100%);
+  box-shadow: 0 6px 20px rgba(47, 111, 237, 0.4);
+}
+
+/* ===== MÉTODOS TRADICIONALES SECTION ===== */
+.home__methods {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.home__methods h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.home__methods > p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.home__methods-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.home__methods-cards .card h2 svg,
+.home__control-list .card h2 svg,
+.home__complete-cards .card h2 svg {
+  width: 2rem;
+  height: 2rem;
+  color: #2F6FED;
+  margin-right: 0.5rem;
+  stroke-width: 1.5;
+}
+
+
+/* ===== CONTROL DE ACCESO SECTION ===== */
+.home__control {
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(47, 111, 237, 0.2);
+  border-bottom: 1px solid rgba(47, 111, 237, 0.2);
+
+}
+
+.home__control-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
-
-.home__video p {
-  color: #fff;
-}
-
-.home__blocks {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 0.65rem;
-}
-
-.home__block {
-  background: var(--accent);
-  border-radius: var(--radius);
-  padding: 1.2rem 1rem;
-  min-height: 125px;
-}
-
-.home__block--tall {
-  min-height: 355px;
-  grid-row: span 2;
-  color:#f2f2f2;
-}
-
-.home__block h3 {
-  margin: 0;
-  font-size: 1.1rem;
+.home__control-header h2 {
   font-family: var(--font-display);
-  color:#f2f2f2;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: #fff;
+  margin: 0;
+  align-items: center;
 }
 
-.home__block p {
-  margin: 0.4rem 0 0;;
-  color:#f2f2f2;
+.home__control-highlight {
+  color: #2F6FED;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  font-weight: 600;
 }
 
-@media (max-width: 860px) {
+.home__control-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  text-align: right;
+}
+
+/* ===== PLATAFORMA COMPLETA SECTION ===== */
+.home__complete {
+  padding: 4rem 2rem;
+}
+
+.home__complete h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: #fff;
+  margin: 0 0 3rem 0;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.highlight {
+  color: #2F6FED;
+}
+
+.home__complete-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
   .home {
-    gap: 3.5rem;
+    gap: 3rem;
+    padding: 1.5rem 0;
   }
 
   .home__hero {
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+
+  .home__logo {
+    width: 80px;
+  }
+
+  .home__arcana-title {
+    width: 250px;
+  }
+
+  .home__hero h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  }
+
+  .home__methods {
+    padding: 2rem 1rem;
+  }
+
+  .home__control {
+    padding: 2rem 1rem;
+  }
+
+  .home__control-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .home__control-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .home__control-highlight {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .home__control-header p {
+    font-size: 1rem;
+  }
+
+  .home__control-list {
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .home__complete {
+    padding: 2rem 1rem;
+  }
+
+  .home__complete h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .home__hero {
+    min-height: 100vh;
+    padding: 1rem;
+  }
+
+  .home__logo {
+    width: 70px;
+  }
+
+  .home__arcana-title {
+    width: 200px;
+  }
+
+  .home__hero h2 {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+  }
+
+  .home__hero-content {
+    gap: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .home__methods {
+    padding: 1.5rem 1rem;
+  }
+
+  .home__methods h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  }
+
+  .home__methods > p {
+    font-size: 0.95rem;
+  }
+
+  .home__methods-cards {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .home__hero h1 {
-    font-size: clamp(3.5rem, 11vw, 6rem);
+  .home__control {
+    padding: 1.5rem 1rem;
   }
 
-  .home__hero-text h2 {
-    font-size: clamp(1rem, 2vw, 1.3rem);
+  .home__control-header {
+    margin-bottom: 1.5rem;
   }
 
-  .home__hero-cards {
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
+  .home__control-header h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   }
 
-  .home__video {
-    min-height: 250px;
-    border-radius: 24px;
+  .home__control-highlight {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   }
 
-  .home__blocks {
+  .home__control-header p {
+    font-size: 0.9rem;
+  }
+
+  .home__control-list {
+    gap: 1.2rem;
+    text-align: left;
+  }
+
+  .home__complete {
+    padding: 1.5rem 1rem;
+  }
+
+  .home__complete h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .home__complete-cards {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
-  .home__block--tall {
-    min-height: 140px;
-    grid-row: span 1;
+  .home__methods-cards .card h2 svg,
+  .home__control-list .card h2 svg,
+  .home__complete-cards .card h2 svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }

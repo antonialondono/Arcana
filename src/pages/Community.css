@@ -1,45 +1,464 @@
 .community {
   display: grid;
-  gap: 1rem;
+  gap: 4rem;
+  padding: 2rem 0;
+}
+
+/* HEADER */
+.community__header {
+  text-align: center;
+  padding: 4rem;
+  background: radial-gradient(ellipse at center, rgba(47, 111, 237, 0.15) 0%, transparent 70%);
 }
 
 .community__header h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  line-height: 1.2;
 }
 
 .community__header p {
-  margin: 0.55rem 0 0;
+  margin: 1rem 0 0 0;
+  font-size: 1.2rem;
   color: var(--muted);
-  max-width: 70ch;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.community__cards {
+/* ESTADÍSTICAS */
+.community__stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
 }
 
-.community__cards article {
-  background: var(--accent);
+.community__stat-item {
+  background: rgba(47, 111, 237, 0.05);
+  border: 1px solid rgba(47, 111, 237, 0.2);
   border-radius: var(--radius);
-  padding: 1rem;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.community__cards h2 {
+.community__stat-icon {
+  font-size: 2.5rem;
+}
+
+.community__stat-item h3 {
   margin: 0;
-  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.community__stat-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.community__stat-card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.community__stat-card h2 svg {
+  width: 2.8rem;
+  height: 2.8rem;
+  color: #2F6FED;
+  stroke-width: 1.5;
+}
+
+.community__stat-card i {
+  font-size: 2.8rem;
+  color: #2F6FED;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HISTORIAS DE ÉXITO */
+.community__stories {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.community__stories-header {
+  text-align: center;
+}
+
+.community__stories-header h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #fff;
+}
+
+.community__highlight {
+  color: #2F6FED;
+}
+
+.community__stories-header p {
+  margin: 0.8rem 0 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.community__stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.community__story-item {
+  background: rgba(47, 111, 237, 0.05);
+  border: 1px solid rgba(47, 111, 237, 0.2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+  min-height: 350px;
+  min-height: 320px;
+}
+
+.community__story-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(47, 111, 237, 0.15);
   font-family: var(--font-display);
+  z-index: -1;
+  pointer-events: none;
 }
 
-.community__cards p {
-  margin: 0.45rem 0 0;
-  color: white;
+.community__story-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  font-style: italic;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  max-width: 85%;
 }
 
-@media (max-width: 860px) {
-  .community__cards {
+.community__story-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.community__story-author h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.community__story-author span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.community__story-company {
+  color: #2F6FED !important;
+  font-weight: 500;
+}
+
+/* CASOS DE ÉXITO */
+.community__success-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.community__cases-header {
+  text-align: center;
+}
+
+.community__cases-header h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #fff;
+}
+
+.community__cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.community__case-card {
+  background: rgba(47, 111, 237, 0.05);
+  border: 1px solid rgba(47, 111, 237, 0.2);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.community__case-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.community__case-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.community__case-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(47, 111, 237, 0.2);
+}
+
+.community__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.community__metric-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2F6FED;
+}
+
+.community__metric-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .community__cases-grid {
     grid-template-columns: 1fr;
+  }
+
+  .community__case-metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .community {
+    gap: 3rem;
+    padding: 1.5rem 0;
+  }
+
+  .community__header {
+    padding: 2rem;
+  }
+
+  .community__header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .community__header p {
+    font-size: 1rem;
+  }
+
+  .community__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .community__stories {
+    padding: 0 1rem;
+  }
+
+  .community__stories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .community__story-item {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .community__story-text {
+    font-size: 0.85rem;
+  }
+
+  .community__success-cases {
+    padding: 0 1rem;
+  }
+
+  .community__cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .community__case-card {
+    padding: 2rem;
+  }
+
+  .community__case-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .community__story-number {
+    font-size: 2rem;
+  }
+
+  .community__stat-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .community__stat-card h2 svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .community {
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .community__header {
+    padding: 1.5rem;
+  }
+
+  .community__header h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .community__header p {
+    font-size: 0.9rem;
+  }
+
+  .community__stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .community__stat-item {
+    padding: 1.5rem;
+  }
+
+  .community__stat-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .community__stat-card h2 svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .community__stories {
+    padding: 0 0.5rem;
+  }
+
+  .community__stories-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .community__stories-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .community__story-item {
+    min-height: auto;
+    padding: 1.2rem;
+    gap: 0.6rem;
+  }
+
+  .community__story-item p {
+    font-size: 0.8rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
+
+  .community__story-author {
+    gap: 0.1rem;
+    padding-top: 1rem;
+  }
+
+  .community__story-author h4 {
+    font-size: 0.9rem;
+  }
+
+  .community__story-author span {
+    font-size: 0.8rem;
+  }
+
+  .community__story-number {
+    font-size: 1.5rem;
+  }
+
+  .community__success-cases {
+    padding: 0 0.5rem;
+  }
+
+  .community__cases-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .community__cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .community__case-card {
+    padding: 1.5rem;
+  }
+
+  .community__case-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .community__case-card p {
+    font-size: 0.9rem;
+  }
+
+  .community__case-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    padding-top: 1rem;
+  }
+
+  .community__metric-value {
+    font-size: 1.4rem;
+  }
+
+  .community__metric-label {
+    font-size: 0.7rem;
   }
 }

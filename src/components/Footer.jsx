@@ -19,7 +19,7 @@ function Footer() {
         <nav aria-label="Navegacion secundaria">
           <Link to="/">Inicio</Link>
           <Link to="/community">Comunidad</Link>
-          <Link to="/contact">Contáctanos</Link>
+          <Link to="/contact">Solicitar demo</Link>
         </nav>
       </div>
     </footer>
