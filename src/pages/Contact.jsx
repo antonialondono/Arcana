@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import './Contact.css'
 
@@ -8,16 +8,70 @@ function Contact() {
     email: '',
     telefono: '',
     comunidad: '',
+    departamento: '',
+    municipio: '',
     mensaje: ''
   })
 
+  const [departamentos, setDepartamentos] = useState([])
+  const [municipios, setMunicipios] = useState([])
+  const [loadingDepts, setLoadingDepts] = useState(false)
+  const [loadingMunis, setLoadingMunis] = useState(false)
+  const [errorDepts, setErrorDepts] = useState(null)
+  const [errorMunis, setErrorMunis] = useState(null)
   const [enviado, setEnviado] = useState(false)
+
+  useEffect(() => {
+    const fetchDepartamentos = async () => {
+      setLoadingDepts(true)
+      setErrorDepts(null)
+      try {
+        const res = await fetch('https://api-colombia.com/api/v1/Department')
+        if (!res.ok) throw new Error('Error al cargar departamentos')
+        const data = await res.json()
+        const sorted = data.sort((a, b) => a.name.localeCompare(b.name))
+        setDepartamentos(sorted)
+      } catch (err) {
+        setErrorDepts('No se pudieron cargar los departamentos. Intenta de nuevo.')
+      } finally {
+        setLoadingDepts(false)
+      }
+    }
+    fetchDepartamentos()
+  }, [])
+
+  useEffect(() => {
+    if (!formData.departamento) {
+      setMunicipios([])
+      return
+    }
+    const fetchMunicipios = async () => {
+      setLoadingMunis(true)
+      setErrorMunis(null)
+      setMunicipios([])
+      try {
+        const res = await fetch(
+          `https://api-colombia.com/api/v1/Department/${formData.departamento}/cities`
+        )
+        if (!res.ok) throw new Error('Error al cargar municipios')
+        const data = await res.json()
+        const sorted = data.sort((a, b) => a.name.localeCompare(b.name))
+        setMunicipios(sorted)
+      } catch (err) {
+        setErrorMunis('No se pudieron cargar los municipios. Intenta de nuevo.')
+      } finally {
+        setLoadingMunis(false)
+      }
+    }
+    fetchMunicipios()
+  }, [formData.departamento])
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
+      ...(name === 'departamento' ? { municipio: '' } : {})
     }))
   }
 
@@ -26,7 +80,15 @@ function Contact() {
     console.log('Formulario enviado:', formData)
     setEnviado(true)
     setTimeout(() => {
-      setFormData({ nombre: '', email: '', telefono: '', comunidad: '', mensaje: '' })
+      setFormData({
+        nombre: '',
+        email: '',
+        telefono: '',
+        comunidad: '',
+        departamento: '',
+        municipio: '',
+        mensaje: ''
+      })
       setEnviado(false)
     }, 3000)
   }
@@ -39,13 +101,14 @@ function Contact() {
           <p>Agenda una demo personalizada y descubre cómo ARCANA puede transformar la seguridad de tu parcelación</p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="contact__card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <form onSubmit={handleSubmit} className="contact__form">
+
             <div className="contact__form-row">
               <div className="contact__form-group">
                 <label htmlFor="nombre">Nombre completo</label>
@@ -101,6 +164,54 @@ function Contact() {
             </div>
 
             <div className="contact__form-group">
+              <label htmlFor="departamento">Departamento</label>
+              {errorDepts && <p className="contact__field-error">{errorDepts}</p>}
+              <select
+                id="departamento"
+                name="departamento"
+                value={formData.departamento}
+                onChange={handleChange}
+                required
+                disabled={loadingDepts}
+              >
+                <option value="">
+                  {loadingDepts ? 'Cargando departamentos…' : 'Selecciona un departamento'}
+                </option>
+                {departamentos.map(dept => (
+                  <option key={dept.id} value={dept.id}>
+                    {dept.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="contact__form-group">
+              <label htmlFor="municipio">Municipio</label>
+              {errorMunis && <p className="contact__field-error">{errorMunis}</p>}
+              <select
+                id="municipio"
+                name="municipio"
+                value={formData.municipio}
+                onChange={handleChange}
+                required
+                disabled={!formData.departamento || loadingMunis}
+              >
+                <option value="">
+                  {!formData.departamento
+                    ? 'Primero selecciona un departamento'
+                    : loadingMunis
+                    ? 'Cargando municipios…'
+                    : 'Selecciona un municipio'}
+                </option>
+                {municipios.map(muni => (
+                  <option key={muni.id} value={muni.id}>
+                    {muni.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="contact__form-group">
               <label htmlFor="mensaje">Mensaje (opcional)</label>
               <textarea
                 id="mensaje"
@@ -121,6 +232,7 @@ function Contact() {
             >
               {enviado ? '✓ Solicitud enviada' : 'Solicitar demo gratuita'}
             </motion.button>
+
           </form>
         </motion.div>
 
