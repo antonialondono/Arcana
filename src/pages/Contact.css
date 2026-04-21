@@ -1,13 +1,13 @@
 .contact {
   display: grid;
-  gap: 3rem;
+  gap: 8rem;
   padding: 2rem 0;
 }
 
 .contact__section {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -161,6 +161,7 @@
   flex-direction: column;
   padding: 2rem !important;
   gap: 0;
+  max-height: fit-content;
 }
 
 .contact__features-list {
@@ -188,6 +189,14 @@
 }
 
 @media (max-width: 768px) {
+  .contact {
+    gap: 6rem;
+  }
+
+  .contact__section {
+    gap: 3rem;
+  }
+
   .contact__card {
     padding: 2rem;
   }
