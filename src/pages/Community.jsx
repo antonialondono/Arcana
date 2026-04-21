@@ -62,7 +62,7 @@ const StoryCard = ({ story, delay = 0 }) => {
   )
 }
 
-// Componente para Cases
+// Componente para Casos
 const CasoCard = ({ casoData, delay = 0 }) => {
   const animConfig = cardsData.animationSimple
   
